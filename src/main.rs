@@ -1,8 +1,11 @@
 use system::NullnetSystem;
+use validator::Validator;
 
+mod chain;
 mod rule;
 mod system;
 mod table;
+mod validator;
 
 fn main() {
     let system = match NullnetSystem::new() {
@@ -14,4 +17,6 @@ fn main() {
     };
 
     system.greeting();
+
+    let _ = Validator::new(system);
 }

@@ -1,8 +1,8 @@
 #[derive(Debug, Clone, PartialEq, Eq, Copy)]
 pub struct Version {
-    pub major: u32,
-    pub minor: u32,
-    pub patch: u32,
+    pub(crate) major: u32,
+    pub(crate) minor: u32,
+    pub(crate) patch: u32,
 }
 
 impl Version {

@@ -2,35 +2,32 @@ mod version;
 mod vparser;
 
 use std::io;
-use version::Version;
+pub use version::Version;
 use vparser::VParser;
 
 #[derive(Debug, Clone, Copy)]
 pub struct NullnetSystem {
-    lver: Version,
-    nver: Version,
+    // Linus version
+    pub linux_ver: Version,
+    // NFTables version
+    pub nftables_ver: Version,
 }
 
 impl NullnetSystem {
     pub fn new() -> io::Result<Self> {
-        let lver = VParser::parse_linux_version()?;
-        let nver = VParser::parse_nftables_version()?;
+        let linux_ver = VParser::parse_linux_version()?;
+        let nftables_ver = VParser::parse_nftables_version()?;
 
-        Ok(Self { lver, nver })
-    }
-
-    pub fn get_linux_version(&self) -> Version {
-        self.lver
-    }
-
-    pub fn get_nftables_version(&self) -> Version {
-        self.nver
+        Ok(Self {
+            linux_ver,
+            nftables_ver,
+        })
     }
 
     pub fn greeting(&self) {
         println!("{GREETING}");
-        println!("{:<20}{}", "Linux version", self.get_linux_version());
-        println!("{:<20}{}", "NFTables version", self.get_nftables_version());
+        println!("{:<20}{}", "Linux version", self.linux_ver);
+        println!("{:<20}{}", "NFTables version", self.nftables_ver);
     }
 }
 
