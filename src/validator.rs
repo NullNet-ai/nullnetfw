@@ -178,10 +178,10 @@ mod tests {
         let validator_old = create_validator((1, 9, 99), (0, 1, 6));
         assert!(!validator_old.is_hook_allowed(Hook::Ingress, ChainType::Filter, Family::Inet));
 
-        let validator_min = create_validator((5, 10, 0), (0, 9, 7)); // Exact minimum
+        let validator_min = create_validator((5, 10, 0), (0, 9, 7));
         assert!(validator_min.is_hook_allowed(Hook::Ingress, ChainType::Filter, Family::Inet));
 
-        let validator_new = create_validator((6, 0, 0), (1, 0, 0)); // Well above minimum
+        let validator_new = create_validator((6, 0, 0), (1, 0, 0));
         assert!(validator_new.is_hook_allowed(Hook::Ingress, ChainType::Filter, Family::Inet));
 
         assert!(!validator_new.is_hook_allowed(Hook::Egress, ChainType::Filter, Family::Inet));

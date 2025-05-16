@@ -5,6 +5,6 @@ pub enum Verdict {
     Queue,
     Continue,
     Return,
-    Jump,
-    Goto,
+    Jump(String),
+    Goto(String),
 }
